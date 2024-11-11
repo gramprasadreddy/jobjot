@@ -18,9 +18,48 @@ repositories {
 }
 
 dependencies {
+	// Spring Boot Web Starter for building web applications
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Spring Security for authentication and authorization
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// H2 Database for in-memory database (development/testing)
+	runtimeOnly 'com.h2database:h2'
+
+	// JSON Web Token (JWT) library for token management
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+	// Jsoup for web scraping
+	implementation 'org.jsoup:jsoup:1.14.3'
+
+	// Selenium for browser automation
+	implementation 'org.seleniumhq.selenium:selenium-java:4.1.0'
+
+	// WebDriverManager for Selenium
+	implementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+	implementation 'org.apache.pdfbox:pdfbox:2.0.24'// Jackson serializer
+
+
+
+	// Lombok to reduce boilerplate code (getters, setters, etc.)
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+
+	// Testing dependencies
+
+		testImplementation 'org.springframework.boot:spring-boot-starter-test' // Includes testing support
+		testImplementation 'org.springframework.security:spring-security-test' // For Spring Security Test functionality
+		testImplementation 'org.mockito:mockito-core:4.8.0'
+
+
 }
 
 tasks.named('test') {

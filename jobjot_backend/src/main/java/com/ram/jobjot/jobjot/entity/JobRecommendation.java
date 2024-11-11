@@ -44,6 +44,5 @@ public class JobRecommendation {
     public void setTitle(String title) {
         this.title = title;
     }
-    // Getters and setters
 }
 

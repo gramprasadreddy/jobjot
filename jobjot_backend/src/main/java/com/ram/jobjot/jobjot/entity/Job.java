@@ -8,7 +8,6 @@ public class Job {
     private String description;
     private String jobLink;
 
-    // Getters and Setters
     public String getJobId() {
         return jobId;
     }

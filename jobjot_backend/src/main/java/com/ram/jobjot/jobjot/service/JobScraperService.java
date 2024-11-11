@@ -39,19 +39,15 @@ public class JobScraperService {
                     WebElement jobElement = jobElements.get(i);
                     Job job = new Job();
 
-                    // Extract job title and link
                     WebElement titleElement = jobElement.findElement(By.cssSelector(".jcs-JobTitle"));
                     job.setTitle(titleElement.getText());
                     job.setJobLink(titleElement.getAttribute("href"));
 
-                    // Click to view job details
                     titleElement.click();
                     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".jobsearch-JobComponent-description")));
 
-                    // Extract job description
                     job.setDescription(driver.findElement(By.cssSelector(".jobsearch-JobComponent-description")).getText());
 
-                    // Extract company name and location
                     try {
                         WebElement companyElement = driver.findElement(By.cssSelector("[data-testid='company-name']"));
                         job.setCompany(companyElement.getText());
@@ -69,23 +65,20 @@ public class JobScraperService {
                     jobList.add(job);
                     jobsFetched++;
 
-                    // Navigate back to the job list page
                     driver.navigate().back();
                     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".job_seen_beacon")));
 
-                    // Refresh job elements after returning
                     jobElements = driver.findElements(By.cssSelector(".job_seen_beacon"));
                 }
 
-                // Check for "Next Page" link, wait until clickable, and click if available
                 try {
                     WebElement nextButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[data-testid='pagination-page-next']")));
-                    Thread.sleep(2000); // Small delay to stabilize navigation
+                    Thread.sleep(2000);
                     nextButton.click();
                     wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".job_seen_beacon")));
                 } catch (Exception e) {
                     System.out.println("No more pages available.");
-                    break; // Exit loop if no "Next Page" button is found
+                    break;
                 }
             }
         } catch (Exception e) {

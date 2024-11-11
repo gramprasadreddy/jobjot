@@ -17,7 +17,6 @@ public class JobListingService {
     private List<JobListing> loadJobListings() {
         List<JobListing> listings = new ArrayList<>();
 
-        // Initialize job listings from the JSON data as static data
         listings.add(new JobListing("Lead Software Developer",
                 "Are you a strategic thinker and hands-on technical expert with a passion for innovation?...",
                 "https://www.adzuna.co.uk/jobs/land/ad/4930513132?se=Erus7Raf7xGOrF0hyYj2Ow&utm_medium=api&utm_source=7fe05f60&v=D54FB27F23527D2EC00DE4A50D6EA3B3E7B7E7B7",
@@ -33,7 +32,6 @@ public class JobListingService {
                 "https://www.adzuna.co.uk/jobs/land/ad/4927458763?se=Erus7Raf7xGOrF0hyYj2Ow&utm_medium=api&utm_source=7fe05f60&v=2068733C83EF27EE64B7B3305832F5BB647929A1",
                 40000));
 
-        // Add all remaining jobs
         listings.add(new JobListing("Middleweight Software Developer",
                 "This is an exciting opportunity to join a dynamic and innovative team supporting the full range of the RSPB's developer work...",
                 "https://www.adzuna.co.uk/jobs/land/ad/4927458712?se=Erus7Raf7xGOrF0hyYj2Ow&utm_medium=api&utm_source=7fe05f60&v=45AA5612614AAECEC479AEC5F03081F5C4F7EBC8",

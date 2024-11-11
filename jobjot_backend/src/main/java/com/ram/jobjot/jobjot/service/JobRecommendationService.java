@@ -40,7 +40,7 @@ public class JobRecommendationService {
 
     private Set<String> extractKeywords(String text) {
         Set<String> keywords = new HashSet<>(Arrays.asList(text.toLowerCase().split("\\W+")));
-        keywords.removeAll(List.of("and", "the", "to", "a", "in", "for", "with", "on", "of")); // common stop words
+        keywords.removeAll(List.of("and", "the", "to", "a", "in", "for", "with", "on", "of"));
         return keywords;
     }
 

@@ -29,17 +29,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF for development or specific cases
+                .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // Allow unrestricted H2 Console access
-                        .requestMatchers("/auth/**").permitAll()    // Allow unrestricted access to authentication endpoints
-                        .anyRequest().permitAll()         // All other requests require authentication
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().permitAll()
                 )
                 .headers(headers -> headers
-                        .frameOptions(frameOptions -> frameOptions.sameOrigin()) // Allow frames for H2 console
+                        .frameOptions(frameOptions -> frameOptions.sameOrigin())
                 )
-                .cors(cors -> cors.disable()); // Disable CORS if not specifically required
-
+                .cors(cors -> cors.disable());
         return http.build();
     }
 
@@ -47,8 +46,8 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-                .userDetailsService(userDetailsService) // Configure custom user details service
-                .passwordEncoder(passwordEncoder());   // Set password encoder to bcrypt
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder());
         return authenticationManagerBuilder.build();
     }
 }

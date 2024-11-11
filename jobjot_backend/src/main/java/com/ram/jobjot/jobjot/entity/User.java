@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 @Table(name = "app_user")
 public class User {
 @Id
-    // Specifies this field as the primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // Auto-generates the ID
     private Long id;
 
@@ -16,7 +15,6 @@ public class User {
     private String email;
     private String password;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

@@ -26,7 +26,6 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // Registration endpoint
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));

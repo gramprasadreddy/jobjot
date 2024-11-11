@@ -28,16 +28,16 @@ public class JobRecommendationController {
     public ResponseEntity<?> uploadResume(@RequestParam(value = "resume", required = false) MultipartFile file) {
         try {
             if (file == null || file.isEmpty()) {
-                logger.warn("File part is null or empty.");
+                logger.warn("File  is null or empty.");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("File part 'file' is missing or empty in the request.");
+                        .body("File part 'resume' is missing or empty in the request.");
             }
             logger.info("File received: {}", file.getOriginalFilename());
             List<JobRecommendation> recommendations = jobRecommendationService.getRecommendations(file);
             return ResponseEntity.ok(recommendations);
         } catch (IOException e) {
-            logger.error("Error processing file upload", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred during file upload.");
+            logger.error("Error  file upload", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(" error  during file upload.");
         }
     }
 }
